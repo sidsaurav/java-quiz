@@ -11,14 +11,18 @@ public class QuestionService {
 
   public void displayQuestions() {
     for (int i = 0; i < questions.length; i++) {
-      System.out.println(questions[i]);
+      displayQuestion(i);
+      String opt[] = questions[i].getOptions();
+      for (int j = 0; j < opt.length; j++) {
+        System.out.println(opt[j]);
+      }
       getAnswer(i);
     }
     showResult();
   }
 
   public void displayQuestion(int id) {
-    System.out.println(questions[id]);
+    System.out.println(questions[id].getQuestion());
   }
 
   public void getAnswer(int id) {
@@ -29,7 +33,8 @@ public class QuestionService {
   public void showResult() {
     int correct = 0;
     for (int i = 0; i < questions.length; i++) {
-      System.out.println("entered " + optionsEntered[i] + " " + questions[i].getAnswer());
+      // System.out.println("entered " + optionsEntered[i] + " " +
+      // questions[i].getAnswer());
       if (optionsEntered[i].equals(questions[i].getAnswer())) {
 
         correct++;
